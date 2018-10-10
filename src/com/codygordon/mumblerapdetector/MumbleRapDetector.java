@@ -7,7 +7,6 @@ import com.codygordon.mumblerapdetector.ui.MainScreen;
 public class MumbleRapDetector {
 
 	public static void main(String[] args) {
-		System.out.println("Initialized Program...");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
