@@ -28,8 +28,12 @@ public class LyricFinder {
 	public String GetLyrics(String artist, String track) {
 		String lyricsJson = retrieveLyrics(artist, track);
 		Song song = getSong(lyricsJson);
-		String lyrics = song.result.track.text;
-		return lyrics;
+		if(song.result != null) {
+			String lyrics = song.result.track.text;
+			return lyrics;
+		} else {
+			return "Error";
+		}
 	}
 	
 	private String retrieveLyrics(String artist, String track) {
@@ -57,6 +61,11 @@ public class LyricFinder {
 	}
 
 	private Song getSong(String json) {
-		return new Gson().fromJson(json, Song.class);
+		try {
+			return new Gson().fromJson(json, Song.class);
+		}
+		catch(Exception e) {
+			return null;
+		}
 	}
 }
